@@ -34,8 +34,18 @@
         <h1>Round <span class="round">1</span></h1>
       </div>
       <section class="play">
-        <div class="game-round-counter">
-          <h1>Round <span class="round">1</span></h1>
+        <div class="game-statistics">
+          <div class="l-header">
+            <h1>Round <span class="round">1</span></h1>
+          </div>
+          <div class="scores-box">
+            <h2>Scores</h2>
+            <div class="scores">
+              <h2><span id="player-scores">1</span></h2>
+              <h2>:</h2>
+              <h2><span id="computer-scores">1</span></h2>
+            </div>
+          </div>
         </div>
         <div class="main-game">
           <div class="player-section">
@@ -70,6 +80,11 @@
               </div>
             </div>
           </div>
+          <div class="versus">
+            <div class="versus-wrapper xl-header">
+              <h1>VS</h1>
+            </div>
+          </div>
         </div>
       </section>
       <section class="info">
@@ -90,7 +105,7 @@
               </div>
               <div class="info-bottom">
                 <div class="info-page">
-                  <p>Page 2 of 3</p>
+                  <p id="info-page">Page 2 of 3</p>
                 </div>
                 <div id="info-close" class="close-button btn">
                   Close

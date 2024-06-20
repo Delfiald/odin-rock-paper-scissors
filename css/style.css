@@ -34,6 +34,11 @@ a {
   white-space: nowrap;
 }
 
+.l-header {
+  font-size: 2rem;
+  white-space: nowrap;
+}
+
 .btn {
   display: inline-block;
   padding: 1rem 1.5rem;
@@ -241,11 +246,45 @@ header .info-icon {
   z-index: -1;
 }
 
-.game-round-counter {
+.game-statistics {
+  position: relative;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   flex: 1 1 20%;
+  gap: 2rem;
+}
+
+.game-statistics > div:first-child {
+  position: absolute;
+  top: 0;
+  align-content: flex-start;
+}
+
+.game-statistics .scores-box {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: .5rem;
+}
+
+.game-statistics .scores {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
 .main-game {
+  position: relative;
   flex: 1 1 80%;
   width: 100%;
   display: flex;
@@ -253,6 +292,23 @@ header .info-icon {
   justify-content: center;
   text-align: center;
   gap: 1rem;
+}
+
+.main-game .versus {
+  position: absolute;
+  top: 20vh;
+  width: 100px;
+  height: 100px;
+  /* opacity: 0;
+  visibility: hidden; */
+  transition: 1s all ease;
+}
+
+.main-game .versus .versus-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
 }
 
 .main-game > div {
@@ -406,6 +462,16 @@ header .info-icon {
   justify-content: center;
   gap: 1rem;
   padding: 1rem;
+}
+
+.info .box-wrapper .info-arrow {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.info .box-wrapper .info-arrow.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 .info .box-wrapper .info-content {

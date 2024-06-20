@@ -59,6 +59,56 @@ infoCloseButton.addEventListener('click', () => {
   info.classList.remove('show');
 })
 
+// Info Content
+const infoArrow = document.querySelectorAll('.info-arrow');
+const infoPages = document.getElementById('info-page');
+
+const infoContent = [
+  {
+    title: 'How to Play',
+    img: '../img/rps.png',
+    p: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur veritatis provident fugit illo nihil. Exercitationem soluta adipisci dolore eaque labore.'
+  },
+  {
+    title: 'Rules 1',
+    img: '../img/rules.png',
+    p: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur veritatis provident fugit illo nihil. Exercitationem soluta adipisci dolore eaque labore.'
+  },
+  {
+    title: 'Rules 2',
+    img: '../img/rules.png',
+    p: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur veritatis provident fugit illo nihil. Exercitationem soluta adipisci dolore eaque labore.'
+  }
+]
+
+let page = 1;
+const totalPages = infoContent.length;
+infoPages.textContent = `Page ${page} of ${totalPages}`;
+infoArrow[1].classList.add('show');
+
+infoArrow.forEach((arrow, index) => {
+  arrow.addEventListener('click', () => {
+    if(index === 0) {
+      page--;
+    } else {
+      page++;
+    }
+
+    infoPages.textContent = `Page ${page} of ${totalPages}`;
+
+    changeInfoContent(page);
+
+    infoArrow[0].classList.toggle('show', page > 1);
+    infoArrow[1].classList.toggle('show', page < totalPages);
+  })
+})
+
+function changeInfoContent(page) {
+  info.querySelector('.info-title h2').textContent = infoContent[page-1].title;
+  info.querySelector('.info-img img').src = infoContent[page-1].img;
+  info.querySelector('.info-text p').textContent = infoContent[page-1].p;
+}
+
 // Player Choose
 const rpsOriginRotation = [0, 120, 240];
 
