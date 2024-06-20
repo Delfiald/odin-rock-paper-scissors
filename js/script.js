@@ -60,11 +60,25 @@ infoCloseButton.addEventListener('click', () => {
 })
 
 // Player Choose
-const playerPaper = document.getElementById('paper');
-const playerScissors = document.getElementById('scissors');
-const playerRock = document.getElementById('rock');
-playerPaper.addEventListener('click', (e) => {
-  playerPaper.classList.add('choose');
-  playerScissors.classList.add('remove');
-  playerRock.classList.add('remove');
-});
+const rpsOriginRotation = [0, 120, 240];
+
+const rockPaperScissors = document.querySelectorAll('.player-section .circle');
+
+let playerChoose;
+
+rockPaperScissors.forEach((rps, index) => {
+  rps.addEventListener('click', (e) => {
+    playerChoose = rps;
+    document.documentElement.style.setProperty('--circle-rotation-origin', `${rpsOriginRotation[index]}deg`);
+    document.documentElement.style.setProperty('--circle-rotation', '90deg');
+    
+    rpsRotate[0].classList.remove('border');
+
+    playerChoose.classList.add('choose');
+    rockPaperScissors.forEach((element, idx) => {
+      if (idx !== index) {
+          element.classList.add('remove');
+      }
+    });
+  })
+})

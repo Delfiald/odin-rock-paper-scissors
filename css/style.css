@@ -3,6 +3,8 @@
 :root {
   --primary-color: #FFFA36;
   --secondary-color: #363bff;
+  --circle-rotation: 0deg;
+  --circle-rotation-origin: 0deg;
 }
 
 * {
@@ -291,11 +293,11 @@ header .info-icon {
   border: 5px solid #ccc;
   border-radius: 50%;
   opacity: 0;
-  /* animation: rock-paper-scissors-border 1s ease 1.5s forwards; */
+  transition: 1s all ease 1s;
 }
 
 .main-game > div .rock-paper-scissors.border::before {
-  animation: rock-paper-scissors-border 1s ease 1.5s forwards;
+  opacity: 1;
 }
 
 .main-game > div .rock-paper-scissors-wrapper {
@@ -333,14 +335,20 @@ header .info-icon {
 
 .main-game > div .rock-paper-scissors .circle.remove {
   opacity: 0;
+  visibility: hidden;
 }
 
 .main-game > div .rock-paper-scissors .circle.choose {
-  transform: scale(1) rotate(90deg) translateY(-180px) !important;
+  animation: choose 1s ease forwards !important;
 }
 
 .main-game > div .rock-paper-scissors .circle h2 {
   opacity: 0;
+  transition: 1s all ease;
+}
+
+.main-game > div .rock-paper-scissors .circle.choose h2 {
+  transform: rotate(-90deg) !important;
 }
 
 .main-game > div .rock-paper-scissors .circle.show h2 {
@@ -460,18 +468,6 @@ header .info-icon {
   }
 }
 
-@keyframes rock-paper-scissors-border {
-  from {
-    opacity: 0;
-    /* transform: scale(0); */
-  }
-
-  to {
-    opacity: 1;
-    /* transform: scale(1); */
-  }
-}
-
 @keyframes rock-paper-scissors-wrapper {
   from {
     width: 50px;
@@ -520,5 +516,15 @@ header .info-icon {
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes choose {
+  from {
+    transform: scale(1) rotate(var(--circle-rotation-origin)) translateY(-180px);
+  }
+
+  to {
+    transform: scale(1) rotate(var(--circle-rotation)) translateY(-180px);
   }
 }
