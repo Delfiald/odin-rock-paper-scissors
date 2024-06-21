@@ -2,49 +2,47 @@
 const start = document.getElementById('start-game');
 const startScreen = document.querySelector('.start');
 const gameRound = document.getElementById('game-round');
-const gameRoundText = document.querySelector('#game-round h1');
-const rpsRotate = document.querySelectorAll('.rock-paper-scissors');
-const rpsScale = document.querySelectorAll('.rock-paper-scissors-wrapper');
+const mainGame = document.getElementById('main-game');
 const rpsCirclePlayer = document.querySelectorAll('.player-section .circle');
 const rpsCircleComputer = document.querySelectorAll('.computer-section .circle');
 
-start.addEventListener('click', () => {
-  startScreen.classList.add('trigger');
-  gameRound.style.animation = 'game-round 1s ease 2s forwards';
-  gameRoundText.style.animation = 'game-round-text 0s ease 1s forwards';
-  startRoundAnimations();
-});
 
-const startRoundAnimations = () => {
+// Round section
+let round = 1;
+
+const startRoundAnimations = (round) => {
+  const roundText = document.querySelectorAll('.round');
+  roundText.forEach(text => {
+    text.textContent = round;
+  });
+
+  gameRound.classList.add('show');
   setTimeout(() => {
-    rpsRotate.forEach((rpsElement, index) => {
-      rpsElement.style.animation = 'rock-paper-scissors 1.5s ease forwards';
-      rpsScale[index].style.animation = 'rock-paper-scissors-wrapper 1.5s ease forwards';
-      rpsElement.classList.add('border');
-    });
-    
-    rpsCirclePlayer.forEach((circleElement, index) => {
-      circleElement.style.animation = `rps-circle-${index+1} 1.5s ease .5s forwards`;
-      rpsCircleComputer[index].style.animation = `rps-circle-${index+1} 1.5s ease .5s forwards`;
-      circleElement.classList.add('show');
-
-      const textElement = circleElement.querySelector('h2');
-      textElement.style.transform = `rotate(-${index * 120}deg)`;
-    });
+    mainGame.classList.add('show');
   }, 2000);
-}
+};
+
+const resetRoundAnimations = () => {
+  gameRound.classList.remove('show');
+  mainGame.classList.remove('show');
+};
 
 gameRound.addEventListener("animationend", (e) => {
-  console.log(e.animationName);
-  if (e.animationName === 'game-round') {
+  if(e.animationName === 'game-round') {
     gameRound.classList.add('hidden');
   }
 });
 
-// Round section
-const roundText = document.querySelectorAll('.round');
-roundText.forEach(round => {
-  round.textContent = 2;
+const nextRound = () => {
+  round++;
+  resetRoundAnimations();
+  startRoundAnimations(round);
+};
+
+// Start Game
+start.addEventListener('click', () => {
+  startScreen.classList.add('trigger');
+  startRoundAnimations(round);
 });
 
 // Show Info
@@ -57,7 +55,7 @@ infoButton.addEventListener('click', () => {
 });
 infoCloseButton.addEventListener('click', () => {
   info.classList.remove('show');
-})
+});
 
 // Info Content
 const infoArrow = document.querySelectorAll('.info-arrow');
@@ -79,7 +77,7 @@ const infoContent = [
     img: '../img/rules.png',
     p: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur veritatis provident fugit illo nihil. Exercitationem soluta adipisci dolore eaque labore.'
   }
-]
+];
 
 let page = 1;
 const totalPages = infoContent.length;
@@ -101,13 +99,13 @@ infoArrow.forEach((arrow, index) => {
     infoArrow[0].classList.toggle('show', page > 1);
     infoArrow[1].classList.toggle('show', page < totalPages);
   })
-})
+});
 
 function changeInfoContent(page) {
   info.querySelector('.info-title h2').textContent = infoContent[page-1].title;
   info.querySelector('.info-img img').src = infoContent[page-1].img;
   info.querySelector('.info-text p').textContent = infoContent[page-1].p;
-}
+};
 
 // Player Choose
 const rpsOriginRotation = [0, 120, 240];

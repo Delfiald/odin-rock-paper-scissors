@@ -228,6 +228,10 @@ header .info-icon {
   /* z-index: -2; */
 }
 
+.game-round.show {
+  animation: game-round 1s ease 2s forwards;
+}
+
 .game-round::before {
   content: '';
   position: absolute;
@@ -240,6 +244,10 @@ header .info-icon {
 .game-round h1 {
   z-index: 2;
   opacity: 0;
+}
+
+.game-round.show h1 {
+  animation: game-round-text 0s ease 1s forwards;
 }
 
 .game-round.hidden {
@@ -341,6 +349,10 @@ header .info-icon {
   /* animation: rock-paper-scissors 1.5s ease forwards; */
 }
 
+.main-game.show > div .rock-paper-scissors {
+  animation: rock-paper-scissors 1.5s ease forwards;
+}
+
 .main-game > div .rock-paper-scissors::before {
   position: absolute;
   content: '';
@@ -352,7 +364,7 @@ header .info-icon {
   transition: 1s all ease 1s;
 }
 
-.main-game > div .rock-paper-scissors.border::before {
+.main-game.show > div .rock-paper-scissors::before {
   opacity: 1;
 }
 
@@ -370,6 +382,10 @@ header .info-icon {
   /* animation: rock-paper-scissors-wrapper 1.5s ease forwards; */
 }
 
+.main-game.show > div .rock-paper-scissors-wrapper {
+  animation: rock-paper-scissors-wrapper 1.5s ease forwards;
+}
+
 .main-game > div .rock-paper-scissors .circle {
   position: absolute;
   display: flex;
@@ -383,6 +399,30 @@ header .info-icon {
   transform: scale(0.5);
   transition: .5s all ease;
   /* animation: rps-circle 1s ease 1.5s forwards; */
+}
+
+.main-game.show > div .rock-paper-scissors .circle.circle-1 {
+  animation: rps-circle-1 1.5s ease .5s forwards;
+}
+
+.main-game.show > div .rock-paper-scissors .circle.circle-2 {
+  animation: rps-circle-2 1.5s ease .5s forwards;
+}
+
+.main-game.show > div .rock-paper-scissors .circle.circle-3 {
+  animation: rps-circle-3 1.5s ease .5s forwards;
+}
+
+.main-game.show > div .rock-paper-scissors .circle.circle-1 h2 {
+  transform: rotate(0deg);
+}
+
+.main-game.show > div .rock-paper-scissors .circle.circle-2 h2 {
+  transform: rotate(-120deg);
+}
+
+.main-game.show > div .rock-paper-scissors .circle.circle-3 h2 {
+  transform: rotate(-240deg);
 }
 
 .main-game > div .rock-paper-scissors .circle.btn:hover {
@@ -407,7 +447,7 @@ header .info-icon {
   transform: rotate(-90deg) !important;
 }
 
-.main-game > div .rock-paper-scissors .circle.show h2 {
+.main-game.show .player-section .rock-paper-scissors .circle h2 {
   animation: rps-circle-text 1s ease 2s forwards;
 }
 
