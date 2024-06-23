@@ -3,9 +3,6 @@ const start = document.getElementById('start-game');
 const startScreen = document.querySelector('.start');
 const gameRound = document.getElementById('game-round');
 const mainGame = document.getElementById('main-game');
-const rpsCirclePlayer = document.querySelectorAll('.player-section .circle');
-const rpsCircleComputer = document.querySelectorAll('.computer-section .circle');
-
 
 // Round section
 let round = 1;
@@ -120,7 +117,7 @@ rockPaperScissors.forEach((rps, index) => {
     document.documentElement.style.setProperty('--circle-rotation-origin', `${rpsOriginRotation[index]}deg`);
     document.documentElement.style.setProperty('--circle-rotation', '90deg');
     
-    rpsRotate[0].classList.remove('border');
+    rps.parentElement.parentElement.classList.add('remove');
 
     playerChoose.classList.add('choose');
     rockPaperScissors.forEach((element, idx) => {
@@ -129,4 +126,4 @@ rockPaperScissors.forEach((rps, index) => {
       }
     });
   })
-})
+});

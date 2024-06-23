@@ -302,21 +302,17 @@ header .info-icon {
   gap: 1rem;
 }
 
-.main-game .versus {
+.main-game .outcome {
   position: absolute;
-  top: 20vh;
-  width: 100px;
-  height: 100px;
+  top: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
   /* opacity: 0;
   visibility: hidden; */
   transition: 1s all ease;
-}
-
-.main-game .versus .versus-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #333;
 }
 
 .main-game > div {
@@ -366,6 +362,10 @@ header .info-icon {
 
 .main-game.show > div .rock-paper-scissors::before {
   opacity: 1;
+}
+
+.main-game.show > div .rock-paper-scissors.remove::before {
+  opacity: 0;
 }
 
 .main-game > div .rock-paper-scissors-wrapper {
