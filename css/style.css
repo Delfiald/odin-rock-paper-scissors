@@ -231,6 +231,7 @@ header .info-icon {
 }
 
 .game-round.show {
+  visibility: visible;
   animation: game-round 1s ease 2s forwards;
 }
 
@@ -253,7 +254,7 @@ header .info-icon {
 }
 
 .game-round.hidden {
-  z-index: -1;
+  visibility: hidden;
 }
 
 .game-statistics {
@@ -470,7 +471,7 @@ header .info-icon {
 }
 
 .main-game.show .computer-section .rock-paper-scissors .circle h2.show {
-  animation: rps-circle-text 1s ease 2s forwards;
+  animation: rps-circle-text 1s ease 1s forwards;
 }
 
 .main-game > div .rock-paper-scissors .circle:first-child {
@@ -484,6 +485,49 @@ header .info-icon {
 
 .main-game > div .rock-paper-scissors .circle:last-child {
   transform: scale(.5) rotate(120deg) translateY(-50px);
+}
+
+/* End Game */
+.end-game {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 1);
+  z-index: 2;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: 1s all 1s ease;
+}
+
+.end-game.show {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 2s !important;
+}
+
+.end-game .end-game-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 2rem;
+}
+
+.end-game .end-game-wrapper > div {
+  flex: 1;
+  align-content: flex-end;
+}
+
+.end-game .end-game-wrapper > div:nth-child(2) {
+  height: 100%;
+  align-content: center;
 }
 
 /* Info */

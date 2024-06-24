@@ -25,11 +25,15 @@ const startRoundAnimations = (rounds) => {
   // }, 3000);
 
   
-  gameRound.addEventListener("animationend", (e) => {
-    if(e.animationName === 'game-round') {
-      gameRound.classList.add('hidden');
-    }
-  });
+  // gameRound.addEventListener("animationend", (e) => {
+  //   if(e.animationName === 'game-round') {
+  //     gameRound.classList.add('hidden');
+  //   }
+  // });
+
+  setTimeout(() => {
+    gameRound.classList.add('hidden');
+  }, 3000)
 };
 
 const resetRoundAnimations = () => {
@@ -136,6 +140,8 @@ rockPaperScissors.forEach((rps, index) => {
           element.classList.add('remove');
       }
     });
+
+    rps.style.pointerEvents = 'none';
     
     playGame(rounds);
   })
@@ -147,6 +153,7 @@ const resetRps = () => {
     document.documentElement.style.setProperty('--circle-rotation', `${rpsOriginRotation[index]}deg`);
     element.classList.remove('remove');
     element.classList.remove('choose');
+    element.style.pointerEvents = 'auto';
   });
 
   rockPaperScissorsComputer.forEach((element, index) => {
@@ -230,20 +237,58 @@ function playRound(humanChoice, computerChoice) {
   outcome.parentElement.parentElement.classList.add('calculate');
 }
 
+let restart = false;
+
 function playGame(rounds) {
   playRound(getHumanChoice(playerChoose), getComputerChoice());
 
   if(rounds < 5){
     nextRound();
-  };
+  } else {
+    document.querySelector('.end-game').classList.add('show');
+  }
+
+  const endGame = document.getElementById('end-game');
+  let endGameText = '';
 
   if (humanScoreCount === computerScoreCount) {
-    console.log(`Shit it's a tie`);
-    // tieBreaker();
+    endGameText = "Shit it's a tie";
+    restart = false;
   } else if (humanScoreCount > computerScoreCount) {
-    console.log('Human Wins This Game, Computer Such a Losers');
+    endGameText = 'Player Wins This Game, Computer Such a Losers';
+    restart = true;
   } else {
-    console.log('Computer Wins This Game, Player Such a Losers');
+    endGameText = 'Computer Wins This Game, Player Such a Losers';
+    restart = true;
+  }
+
+  endGame.textContent = endGameText;
+}
+
+const endGameButton = document.getElementById('end-game-button');
+
+endGameButton.addEventListener('click', () => {
+  restartGame(restart);
+})
+
+const restartGame = (restart) => {
+  if(restart) {
+    rounds = 1;
+    humanScoreCount = 0;
+    computerScoreCount = 0;
+    playerScore.textContent = humanScoreCount;
+    computerScore.textContent = computerScoreCount;
+    mainGame.classList.remove('show');
+    resetRoundAnimations();
+    resetRps();
+    startRoundAnimations(rounds);
+    document.querySelector('.end-game').classList.remove('show');
+  } else {
+    mainGame.classList.remove('show');
+    resetRoundAnimations();
+    resetRps();    
+    startRoundAnimations(rounds);
+    document.querySelector('.end-game').classList.remove('show');
   }
 }
 
