@@ -138,8 +138,8 @@ header .info-icon {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: inherit;
-  height: inherit;
+  width: 100vw;
+  height: 100vh;
   background: var(--primary-color);
   padding: 3rem 1rem;
   gap: 2rem;
@@ -297,6 +297,7 @@ header .info-icon {
 .main-game > div {
   position: relative;
   flex: 1 1 100%;
+  max-width: 45vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -315,8 +316,8 @@ header .info-icon {
 .main-game > div .rock-paper-scissors {
   margin-top: 2rem;
   position: relative;
-  width: 50vh;
-  height: 50vh;
+  width: 350px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -667,7 +668,7 @@ header .info-icon {
   }
 
   to {
-    transform: scale(1) rotate(0deg) translateY(-180px);
+    transform: scale(1) rotate(0deg) translateY(-175px);
   }
 }
 @keyframes rps-circle-2 {
@@ -676,7 +677,7 @@ header .info-icon {
   }
 
   to {
-    transform: scale(1) rotate(120deg) translateY(-180px);
+    transform: scale(1) rotate(120deg) translateY(-175px);
   }
 }
 @keyframes rps-circle-3 {
@@ -685,7 +686,7 @@ header .info-icon {
   }
 
   to {
-    transform: scale(1) rotate(240deg) translateY(-180px);
+    transform: scale(1) rotate(240deg) translateY(-175px);
   }
 }
 
@@ -701,20 +702,53 @@ header .info-icon {
 
 @keyframes choose {
   from {
-    transform: scale(1) rotate(var(--circle-rotation-origin)) translateY(-180px);
+    transform: scale(1) rotate(var(--circle-rotation-origin)) translateY(-175px);
   }
 
   to {
-    transform: scale(1) rotate(var(--circle-rotation)) translateY(-180px);
+    transform: scale(1) rotate(var(--circle-rotation)) translateY(-175px);
   }
 }
 
 @keyframes computer-choose {
   from {
-    transform: scale(1) rotate(var(--circle-rotation-origin-computer)) translateY(-180px);
+    transform: scale(1) rotate(var(--circle-rotation-origin-computer)) translateY(-175px);
   }
 
   to {
-    transform: scale(1) rotate(var(--circle-rotation-computer)) translateY(-180px);
+    transform: scale(1) rotate(var(--circle-rotation-computer)) translateY(-175px);
+  }
+}
+
+@media (max-width: 1440px) {
+  .game-round {
+    font-size: 10em;
+  }
+}
+
+@media (max-width: 1100px) {
+  .game-round {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .xl-header {  
+    white-space: wrap;
+    text-align: center;
+  }
+
+  .game-round {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .xl-header {
+    font-size: 1.5rem;
+  }
+
+  .game-round{
+    font-size: 2rem;
   }
 }
