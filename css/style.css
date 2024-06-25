@@ -138,8 +138,8 @@ header .info-icon {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: inherit;
-  height: inherit;
+  width: 100vw;
+  height: 100vh;
   background: var(--primary-color);
   padding: 3rem 1rem;
   gap: 2rem;
@@ -149,7 +149,6 @@ header .info-icon {
 
 .start.trigger {
   transform: translateY(-150vh);
-  /* z-index: 0; */
 }
 
 .start > div {
@@ -197,6 +196,38 @@ header .info-icon {
   border-radius: 5px;
 }
 
+/* Main / Rounds */
+.game-round {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12rem;
+  z-index: 2;
+  white-space: nowrap;
+  background: #000;
+  visibility: hidden;
+}
+
+.game-round h1 {
+  z-index: 2;
+  opacity: 0;
+}
+
+.game-round.show {
+  visibility: visible;
+  animation: game-round 1s ease 2s forwards;
+}
+
+.game-round.show h1 {
+  animation: game-round-text 0s ease 1s forwards;
+}
+
 /* Main / Game*/
 .play {
   background: #f4f4f4;
@@ -213,50 +244,7 @@ header .info-icon {
   z-index: 1;
 }
 
-.game-round {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12rem;
-  z-index: 2;
-  white-space: nowrap;
-  /* flex: 1 1 20%; */
-  /* z-index: -2; */
-}
-
-.game-round.show {
-  visibility: visible;
-  animation: game-round 1s ease 2s forwards;
-}
-
-.game-round::before {
-  content: '';
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 1);
-  z-index: 1;
-}
-
-.game-round h1 {
-  z-index: 2;
-  opacity: 0;
-}
-
-.game-round.show h1 {
-  animation: game-round-text 0s ease 1s forwards;
-}
-
-.game-round.hidden {
-  visibility: hidden;
-}
-
+/* Main / Game Statistics */
 .game-statistics {
   position: relative;
   width: 25%;
@@ -294,6 +282,7 @@ header .info-icon {
   justify-content: space-around;
 }
 
+/* Main / Main Game */
 .main-game {
   position: relative;
   flex: 1 1 80%;
@@ -305,30 +294,10 @@ header .info-icon {
   gap: 1rem;
 }
 
-.main-game .outcome {
-  position: absolute;
-  top: 15vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.main-game .outcome .winner {
-  opacity: 0;
-  visibility: hidden;
-  transition: 1s all 1.5s ease;
-}
-
-.main-game .outcome .winner.calculate {
-  opacity: 1;
-  visibility: visible;
-}
-
 .main-game > div {
   position: relative;
   flex: 1 1 100%;
+  max-width: 45vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -347,17 +316,12 @@ header .info-icon {
 .main-game > div .rock-paper-scissors {
   margin-top: 2rem;
   position: relative;
-  width: 50vh;
-  height: 50vh;
+  width: 350px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  /* animation: rock-paper-scissors 1.5s ease forwards; */
-}
-
-.main-game.show > div .rock-paper-scissors {
-  animation: rock-paper-scissors 1.5s ease forwards;
 }
 
 .main-game > div .rock-paper-scissors::before {
@@ -371,14 +335,6 @@ header .info-icon {
   transition: 1s all ease 1s;
 }
 
-.main-game.show > div .rock-paper-scissors::before {
-  opacity: 1;
-}
-
-.main-game.show > div .rock-paper-scissors.remove::before {
-  opacity: 0;
-}
-
 .main-game > div .rock-paper-scissors-wrapper {
   position: absolute;
   display: flex;
@@ -388,15 +344,9 @@ header .info-icon {
   transform-origin: center;
   width: 100%;
   height: 100%;
-  width: 50px;
-  height: 50px;
-  /* animation: rock-paper-scissors-wrapper 1.5s ease forwards; */
 }
 
-.main-game.show > div .rock-paper-scissors-wrapper {
-  animation: rock-paper-scissors-wrapper 1.5s ease forwards;
-}
-
+/* Main / Main Game / Circle */
 .main-game > div .rock-paper-scissors .circle {
   position: absolute;
   display: flex;
@@ -409,7 +359,50 @@ header .info-icon {
   background: #fff;
   transform: scale(0.5);
   transition: .5s all ease;
-  /* animation: rps-circle 1s ease 1.5s forwards; */
+}
+
+.main-game > div .rock-paper-scissors .circle:first-child {
+  transform: scale(.5) rotate(-120deg) translateY(-50px);
+}
+
+.main-game > div .rock-paper-scissors .circle:nth-child(2),
+.main-game > div .rock-paper-scissors .circle:last-child {
+  transform: scale(.5) rotate(0deg) translateY(-50px);
+}
+
+.main-game > div .rock-paper-scissors .circle:last-child {
+  transform: scale(.5) rotate(120deg) translateY(-50px);
+}
+
+.main-game > div .rock-paper-scissors .circle.btn:hover {
+  border: 1px solid #333;
+}
+
+/* Main / Main Game / Circle Text */
+.main-game > div .rock-paper-scissors .circle h2 {
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.main-game.show .player-section .rock-paper-scissors .circle.choose h2 {
+  transform: rotate(-90deg);
+}
+
+.main-game.show .computer-section .rock-paper-scissors .circle.choose h2 {
+  transform: rotate(90deg);
+}
+
+/* Main / Main Game Show */
+.main-game.show > div .rock-paper-scissors {
+  animation: rock-paper-scissors 1.5s ease forwards;
+}
+
+.main-game.show > div .rock-paper-scissors::before {
+  opacity: 1;
+}
+
+.main-game.show > div .rock-paper-scissors.remove::before {
+  opacity: 0;
 }
 
 .main-game.show > div .rock-paper-scissors .circle.circle-1 {
@@ -436,55 +429,47 @@ header .info-icon {
   transform: rotate(-240deg);
 }
 
-.main-game > div .rock-paper-scissors .circle.btn:hover {
-  border: 1px solid #333;
+.main-game.show .player-section .rock-paper-scissors .circle h2 {
+  animation: rps-circle-text 1s ease 2s forwards;
 }
 
-.main-game > div .rock-paper-scissors .circle.remove {
+.main-game.show > div .rock-paper-scissors .circle.remove {
   opacity: 0;
   visibility: hidden;
 }
 
-.main-game .player-section .rock-paper-scissors .circle.choose {
-  animation: choose 1s ease forwards !important;
+.main-game.show .player-section .rock-paper-scissors .circle.choose {
+  animation: choose 1s ease forwards;
 }
 
-.main-game .computer-section .rock-paper-scissors .circle.choose {
-  animation: computer-choose 1s ease forwards !important;
-}
-
-.main-game > div .rock-paper-scissors .circle h2 {
-  opacity: 0;
-  transition: 1s all ease;
-}
-
-.main-game .player-section .rock-paper-scissors .circle.choose h2 {
-  transform: rotate(-90deg) !important;
-}
-
-.main-game .computer-section .rock-paper-scissors .circle.choose h2 {
-  transform: rotate(90deg) !important;
-}
-
-.main-game.show .player-section .rock-paper-scissors .circle h2 {
-  animation: rps-circle-text 1s ease 2s forwards;
+.main-game.show .computer-section .rock-paper-scissors .circle.choose {
+  animation: computer-choose 1s ease forwards;
 }
 
 .main-game.show .computer-section .rock-paper-scissors .circle h2.show {
   animation: rps-circle-text 1s ease 1s forwards;
 }
 
-.main-game > div .rock-paper-scissors .circle:first-child {
-  transform: scale(.5) rotate(-120deg) translateY(-50px);
+/* Main / Outcome */
+.main-game .outcome {
+  position: absolute;
+  top: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.main-game > div .rock-paper-scissors .circle:nth-child(2),
-.main-game > div .rock-paper-scissors .circle:last-child {
-  transform: scale(.5) rotate(0deg) translateY(-50px);
+.main-game .outcome .winner {
+  opacity: 0;
+  visibility: hidden;
+  transition: 1s all 1.5s ease;
 }
 
-.main-game > div .rock-paper-scissors .circle:last-child {
-  transform: scale(.5) rotate(120deg) translateY(-50px);
+.main-game .outcome .winner.calculate {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* End Game */
@@ -502,13 +487,12 @@ header .info-icon {
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  transition: 1s all 1s ease;
+  transition: 1s all ease;
 }
 
 .end-game.show {
   opacity: 1;
   visibility: visible;
-  transition-delay: 2s !important;
 }
 
 .end-game .end-game-wrapper {
@@ -530,6 +514,20 @@ header .info-icon {
   align-content: center;
 }
 
+.end-game .end-game-wrapper > div .btn {
+  display: block;
+  opacity: .8;
+  transition: .5s all ease;
+}
+
+.end-game .end-game-wrapper > div .btn:hover {
+  opacity: 1;
+}
+
+.end-game .end-game-wrapper > div .btn.disabled {
+  display: none;
+}
+
 /* Info */
 .info {
   position: absolute;
@@ -538,7 +536,6 @@ header .info-icon {
   width: 100%;
   height: 100%;
   background: rgba(100, 100, 100, .5);
-  /* z-index: 2; */
   opacity: 0;
   display: flex;
   align-items: center;
@@ -550,6 +547,15 @@ header .info-icon {
   z-index: 2;
 }
 
+.info .btn {
+  opacity: 0.8;
+  transition: .5s all ease;
+}
+
+.info .btn:hover {
+  opacity: 1;
+}
+
 .info .box {
   position: relative;
   background: #f4f4f4;
@@ -558,6 +564,9 @@ header .info-icon {
   width: 100%;
   max-width: 700px;
   display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 650px;
   align-items: center;
   justify-content: center;
 }
@@ -568,6 +577,7 @@ header .info-icon {
   justify-content: center;
   gap: 1rem;
   padding: 1rem;
+  height: inherit;
 }
 
 .info .box-wrapper .info-arrow {
@@ -584,18 +594,28 @@ header .info-icon {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  height: inherit;
 }
 
+.info .box-wrapper .info-content .info-text,
 .info .box-wrapper .info-content .info-img {
-  flex: 1 1 100%;
+  margin-top: 1rem;
+  flex: 1 1 auto;
+  height: 50%;
 }
 
 .info .box-wrapper .info-content .info-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.info .box-wrapper .info-content .info-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  display: none;
 }
 
 .info .box-wrapper .info-content .info-bottom {
@@ -612,10 +632,12 @@ header .info-icon {
 @keyframes game-round {
   0% {
     opacity: 1;
+    visibility: visible;
   }
 
   100% {
     opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -640,26 +662,13 @@ header .info-icon {
   }
 }
 
-@keyframes rock-paper-scissors-wrapper {
-  from {
-    width: 50px;
-    height: 50px;
-  }
-
-  to {
-    /* transform: rotate(90deg); */
-    width: 100%;
-    height: 100%;
-  }
-}
-
 @keyframes rps-circle-1 {
   from {
     transform: scale(.5) rotate(-120deg) translateY(-50px);
   }
 
   to {
-    transform: scale(1) rotate(0deg) translateY(-180px);
+    transform: scale(1) rotate(0deg) translateY(-175px);
   }
 }
 @keyframes rps-circle-2 {
@@ -668,7 +677,7 @@ header .info-icon {
   }
 
   to {
-    transform: scale(1) rotate(120deg) translateY(-180px);
+    transform: scale(1) rotate(120deg) translateY(-175px);
   }
 }
 @keyframes rps-circle-3 {
@@ -677,7 +686,7 @@ header .info-icon {
   }
 
   to {
-    transform: scale(1) rotate(240deg) translateY(-180px);
+    transform: scale(1) rotate(240deg) translateY(-175px);
   }
 }
 
@@ -693,19 +702,53 @@ header .info-icon {
 
 @keyframes choose {
   from {
-    transform: scale(1) rotate(var(--circle-rotation-origin)) translateY(-180px);
+    transform: scale(1) rotate(var(--circle-rotation-origin)) translateY(-175px);
   }
 
   to {
-    transform: scale(1) rotate(var(--circle-rotation)) translateY(-180px);
+    transform: scale(1) rotate(var(--circle-rotation)) translateY(-175px);
   }
 }
+
 @keyframes computer-choose {
   from {
-    transform: scale(1) rotate(var(--circle-rotation-origin-computer)) translateY(-180px);
+    transform: scale(1) rotate(var(--circle-rotation-origin-computer)) translateY(-175px);
   }
 
   to {
-    transform: scale(1) rotate(var(--circle-rotation-computer)) translateY(-180px);
+    transform: scale(1) rotate(var(--circle-rotation-computer)) translateY(-175px);
+  }
+}
+
+@media (max-width: 1440px) {
+  .game-round {
+    font-size: 10em;
+  }
+}
+
+@media (max-width: 1100px) {
+  .game-round {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .xl-header {  
+    white-space: wrap;
+    text-align: center;
+  }
+
+  .game-round {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .xl-header {
+    font-size: 1.5rem;
+  }
+
+  .game-round{
+    font-size: 2rem;
   }
 }
