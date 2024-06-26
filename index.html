@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Rock Paper Scissors</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="navbar">
+        <div id="info-button" class="info-icon">
+          <i class="fas fa-info"></i>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="start">
+        <div class="start-title">
+          <h1 class="xl-header">Odin Rock Paper Scissors</h1>
+        </div>
+        <div class="start-button">
+          <div class="start-button-wrapper">
+            <button id="start-game" class="btn btn-primary">Start Game</button>
+          </div>
+        </div>
+      </section>
+      <div id="game-round" class="game-round">
+        <h1>Round <span class="round">1</span></h1>
+      </div>
+      <section class="play">
+        <div class="game-statistics">
+          <div class="l-header">
+            <h1>Round <span class="round">1</span></h1>
+          </div>
+          <div class="scores-box">
+            <h2>Scores</h2>
+            <div class="scores">
+              <h2><span id="player-scores">0</span></h2>
+              <h2>:</h2>
+              <h2><span id="computer-scores">0</span></h2>
+            </div>
+          </div>
+        </div>
+        <div id="main-game" class="main-game">
+          <div class="player-section">
+            <h1>Player</h1>
+            <div class="rock-paper-scissors">
+              <div class="rock-paper-scissors-wrapper">
+                <div id="paper" class="circle circle-1 btn">
+                  <h2><img src="img/hand-paper.png" alt=""></h2>
+                </div>
+                <div id="scissors" class="circle circle-2 btn">
+                  <h2><img src="img/scissors.png" alt=""></h2>
+                </div>
+                <div id="rock" class="circle circle-3 btn">
+                  <h2><img src="img/fist.png" alt=""></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="computer-section disabled">
+            <h1>Computer</h1>
+            <div class="rock-paper-scissors">
+              <div class="rock-paper-scissors-wrapper">
+                <div id="paper" class="circle circle-1 btn">
+                  <h2><img src="img/hand-paper.png" alt=""></h2>
+                </div>
+                <div id="scissors" class="circle circle-2 btn">
+                  <h2><img src="img/scissors.png" alt=""></h2>
+                </div>
+                <div id="rock" class="circle circle-3 btn">
+                  <h2><img src="img/fist.png" alt=""></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="outcome">
+            <div class="winner">
+              <h2><span id="result-text">Player Win</span></h2>
+            </div>
+            <div class="versus l-header">
+              <h1>VS</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="end-game">
+        <div class="end-game-wrapper">
+          <div>
+            <h1 class="xl-header" id="end-game-text">Player Win This Game</h1>
+          </div>
+          <div>
+            <div id="end-game-button" class="btn"><i class="fas fa-repeat fa-3x"></i></div>
+            <div id="end-game-button" class="btn disabled"><i class="fas fa-chevron-right fa-3x"></i></div>
+          </div>
+        </div>
+      </section>
+      <section class="info">
+        <div class="box">
+          <div class="box-wrapper">
+            <div class="info-arrow btn">
+              <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="info-content">
+              <div class="info-title">
+                <h2>How to Play</h2>
+              </div>
+              <div class="info-img">
+                <img src="img/rps.png" alt="Help Images">
+              </div>
+              <div class="info-text">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut velit dolores placeat laudantium pariatur, voluptatibus vitae. Reiciendis praesentium voluptate aperiam?</p>
+              </div>
+              <div class="info-social">
+                <a href="https://github.com/Delfiald/odin-rock-paper-scissors" class="btn"><i class="fab fa-github fa-2x"></i></a>
+                <a href="" class="btn"><i class="fab fa-linkedin fa-2x"></i></a>
+              </div>
+              <div class="info-bottom">
+                <div class="info-page">
+                  <p id="info-page">Page 2 of 3</p>
+                </div>
+                <div id="info-close" class="close-button btn">
+                  Close
+                </div>
+              </div>
+            </div>
+            <div class="info-arrow btn">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script src="./js/script.js"></script>
+</body>
+</html>
