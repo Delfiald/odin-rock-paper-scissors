@@ -227,6 +227,7 @@ function playRound(humanChoice, computerChoice) {
 
 let restart = false;
 const end = document.querySelector('.end-game');
+const endGameButton = document.querySelectorAll('#end-game-button');
 
 function playGame(rounds) {
   playRound(getHumanChoice(playerChoose), getComputerChoice());
@@ -253,11 +254,14 @@ function playGame(rounds) {
     restart = true;
   }
 
+  endGameButton[0].classList.toggle('disabled', !restart)
+  endGameButton[1].classList.toggle('disabled', restart)
+
   endGame.textContent = endGameText;
 }
 
-const endGameButton = document.getElementById('end-game-button');
-
-endGameButton.addEventListener('click', () => {
-  restartGame(restart);
+endGameButton.forEach((endButton) => {
+  endButton.addEventListener('click', () => {
+    restartGame(restart);
+  })
 })
