@@ -83,13 +83,13 @@ const infoContent = [
   },
   {
     title: 'Rules',
-    img: '../img/rps.png',
+    img: '../img/rules.png',
     p: 'The rules of Rock Paper Scissors are simple: Rock crushes Scissors, Scissors cut Paper, and Paper covers Rock. If the final scores between the player and the computer are tied, an extra round will be played to determine the winner. The first player to win 5 rounds (including any tiebreaker rounds) wins the game. Keep playing rounds to see who emerges victorious!'
   },
   {
     title: 'About',
     img: '../img/profile.jpg',
-    p: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur veritatis provident fugit illo nihil. Exercitationem soluta adipisci dolore eaque labore.'
+    p: "Hi, I'm Dogeheck. I'm working on a game called Odin Rock Paper Scissors. It's a take on the classic Rock Paper Scissors game. You can visit my GitHub to check it out and share any suggestions you have for improving the project."
   }
 ];
 
