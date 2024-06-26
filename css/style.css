@@ -393,6 +393,29 @@ header .info-icon {
   transform: rotate(90deg);
 }
 
+.main-game.show > div .rock-paper-scissors .circle h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-game.show > div .rock-paper-scissors .circle h2 img {
+  position: relative;
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+}
+
+.main-game.show > div .rock-paper-scissors .circle::before {
+  content: '';
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 50%;
+}
+
 /* Main / Main Game Show */
 .main-game.show > div .rock-paper-scissors {
   animation: rock-paper-scissors 1.5s ease forwards;
