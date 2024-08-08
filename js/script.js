@@ -78,7 +78,7 @@ start.addEventListener('click', () => {
 const infoContent = [
   {
     title: 'How to Play',
-    img: '../img/rps.png',
+    img: '../img/rules.png',
     p: "Welcome to Rock Paper Scissors! On the left side of the screen, you'll find the Player Section. Choose your move by clicking on Rock, Paper, or Scissors. Your selected move will then move to the center. On the right side, the computer will randomly select its move, which will also appear in the center. Enjoy the game and see if you can outsmart the computer!"
   },
   {
@@ -146,7 +146,7 @@ let playerChoose;
 
 rockPaperScissors.forEach((rps, index) => {
   rps.addEventListener('click', (e) => {
-    playerChoose = rps.querySelector('h2').textContent;
+    playerChoose = rps.dataset.value;
     document.documentElement.style.setProperty('--circle-rotation-origin', `${rpsOriginRotation[index]}deg`);
     document.documentElement.style.setProperty('--circle-rotation', '90deg');
 
@@ -202,6 +202,7 @@ const computerScore = document.getElementById('computer-scores');
 let resultText = '';
 
 function playRound(humanChoice, computerChoice) {
+  console.log(humanChoice);
   if (humanChoice === computerChoice) {
     resultText = "It's a Tie";
     humanScoreCount++;
